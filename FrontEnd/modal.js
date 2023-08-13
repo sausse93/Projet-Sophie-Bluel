@@ -2,16 +2,23 @@ console.log("hello world")
 
 const reponse = await fetch("http://localhost:5678/api/works")
 const picture = await reponse.json()
-
+let i = 0
+const photo = picture[i]
 
 export function modal () {
 const btnModifI = document.querySelector(".modifImage")
 btnModifI.addEventListener("click",creatModal)
+console.log(btnModifI)
+console.log("btn modif image OK")
 const btnModifP = document.querySelector(".modifImageProjet")
 btnModifP.addEventListener("click",creatModal)
+suppressionModalPhoto()
 }
-
+// fonction pour creer la modal avec les photo 
 function creatModal () {
+
+    // La forme de la modal 
+
 const modalBase = document.querySelector("body")
 const modalHeader = document.querySelector("header")
 const modalElement = document.createElement("div")
@@ -25,7 +32,6 @@ modalElement.innerHTML = `
 <h2>Galerie photo</h2>
 </div>
 <div class="modal-body">
-
 </div>
 <div class="modal-footer">
 <button class="addPhoto">Ajouter une photo</button>
@@ -34,40 +40,84 @@ modalElement.innerHTML = `
 ` 
 console.log("Btn ok")
 const modal = document.getElementById("myModal")
-modal.style.display = "block"
+modal.style.display = "block" 
+genererPhotoModal()
+// Fermeture de la modal en cliquant sur la croix   
 const croix = document.querySelector(".close")
-
 croix.onclick = function () {
     modalBase.removeChild(modalElement)
 }
 }
-
-function modalPhoto () {
-    const pictureModal = document.querySelector("#myModal")
-    const divPhoto = document.createElement("div")
-    divPhoto.setAttribute("class", "photoModal")
-    const photoElement = document.createElement("img")
-    photoElement.setAttribute("class",`photo${picture.id}`)
-    const photoInfo = document.createElement("figcaption")
-    const photoLogo = document.createElement("div")
-    photoLogo.setAttribute("class", "logo")
-    photoElement.src = picture.imageUrl
-    photoInfo.innerText = "éditer"
-    photoLogo.innerHTML =`
+function genererPhotoModal () {
+fetch("http://localhost:5678/api/works")
+            .then(function (reponse){
+                return reponse.json()
+            })
+            for (let i = 0; i < picture.length ; i++){
+            const photo = picture[i]
+            
+const photoModal = document.querySelector(".modal-body")
+const divPhoto = document.createElement("div")
+divPhoto.setAttribute("class", "photoModal")
+const photoElement = document.createElement("img")
+photoElement.setAttribute("class",`photo${photo.id}`)
+const photoInfo = document.createElement("figcaption")
+const photoLogo = document.createElement("div")
+photoLogo.setAttribute("class", "logo")
+photoElement.src = photo.imageUrl
+photoInfo.innerText = "éditer"
+photoLogo.innerHTML =`
             <i class="fa-solid fa-up-down-left-right"></i>
-            <i id="trash" class="fa-regular fa-trash-can"></i>
+            <i id="${photo.id}" class="fa-regular fa-trash-can "></i>
                                     `
-    pictureModal.appendChild(divPhoto)
+    photoModal.appendChild(divPhoto)
     divPhoto.appendChild(photoElement)
     divPhoto.appendChild(photoLogo)
     divPhoto.appendChild(photoInfo)
+    const removePhoto = document.getElementById(`${photo.id}`)
+console.log("Valeur de removePhoto")
+console.log(removePhoto.id)
+removePhoto.addEventListener("click", suppBtn())
+}
+}
+
+
+const idProject = picture.id
+
+const removePhoto = document.getElementById(`${photo.id}`)
+console.log("Valeur de removePhoto")
+console.log(removePhoto)
+
+function suppressionModalPhoto () {
+console.log("ok")}
+function suppBtn (){
+async function suppPhoto() {
+    const promise = await fetch(`http://localhost:5678/api/works/${idProject}`, {
+        method: 'DELETE',
+        headers:{
+            'Authorization': 'bearer' + token
+        }
+    })
+    if (promise.ok === true) {
+        reponse = await fetch("http://localhost:5678/api/works")
+        picture = await reponse.json()
+        document.querySelector(".gallery").innerHTML = ""
+        document.querySelector(".photoModal").innerHTML=""
+        for (let photo of picture) {
+            genererPhoto(photo)
+            genererPhotoModal(photo)
+            console.log("ok")
+
+        }
+    }else {
+        console.log(promise.status)
+        alert("Suppression Impossible")
+    }
     
-}
-
-export function genererPhotoModal () {
+    }
     for (let photo of picture) {
-        modalPhoto()
-        genererPhoto(photo)
-}
-}
+        if (removePhoto.id === photo.id)
+        suppPhoto()
 
+}
+}

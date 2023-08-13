@@ -316,3 +316,110 @@ a {
 	margin-bottom: 0;
 	padding-right: 30px;
 }
+
+/****** Modal ****/
+
+.modal-content {
+	border: 2px solid black;
+	
+}
+#myModal{
+	overflow: auto;
+    width: 630px;
+    height: 70%;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    overflow: auto;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8%;
+	background-color: white;
+	
+
+}
+
+
+.photoModal {
+	display: flex;
+	flex-direction: column;
+	width: 78px;
+	
+	
+}
+
+.modal-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	gap: 25px;
+	margin: 20px;
+	border-bottom: 1px solid grey;
+	
+}
+
+.logo {
+	color: white;
+	display: inline-block;
+	position: relative;
+	top: -104px;
+	right: -26px;
+	margin: 0;
+}
+
+.fa-trash-can:hover , .fa-up-down-left-right:hover {
+	cursor: pointer;
+}
+
+.photoModal .fa-trash-can,.photoModal .fa-up-down-left-right{
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 4px;
+	margin:0;
+	
+}
+.photoModal .fa-up-down-left-right{
+	visibility: hidden;
+}
+.photoModal:hover .fa-up-down-left-right{
+	visibility: visible;
+}
+.photoModal figcaption {
+	position: relative;
+	top: -20px;
+	padding: 0;
+	margin: 0;
+}
+
+.modal-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 15px;
+}
+.addPhoto {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 15px;
+	border-radius: 25px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #1D6154;
+	color: white;
+	font-family: 'Syne';
+	width: 230px;
+}
+
+.supGallery {
+	display: flex;
+	justify-content: center;
+	background: none;
+	border: none;
+	font-size: 14px;
+	font-family: 'Syne';
+	color: #D65353;
+}

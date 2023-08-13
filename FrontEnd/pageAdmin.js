@@ -82,3 +82,4 @@ function suppCate () {
 
 
 // Lancement Fonction de la page en mode Admin
+

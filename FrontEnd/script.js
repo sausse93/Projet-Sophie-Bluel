@@ -1,5 +1,5 @@
 import { pageAdmin } from "./pageAdmin.js"
-import { genererPhotoModal } from "./modal.js"
+import { modal} from "./modal.js"
 const reponse = await fetch("http://localhost:5678/api/works")
 const picture = await reponse.json()
 console.log(picture)
@@ -74,5 +74,4 @@ boutonHotel.addEventListener("click", function() {
     }
 })
 pageAdmin()   
-
-await genererPhotoModal()
+modal()
