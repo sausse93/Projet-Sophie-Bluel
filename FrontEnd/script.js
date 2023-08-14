@@ -6,6 +6,7 @@ console.log(picture)
 
 
 function genererPhoto (photo) {
+    console.log(photo)
     const divGallery = document.querySelector(".gallery")
         const photoElement = document.createElement("figure")
         const photoImg = document.createElement("img")
