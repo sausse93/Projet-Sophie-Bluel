@@ -317,12 +317,9 @@ a {
 	padding-right: 30px;
 }
 
-/****** Modal ****/
+/****** Modal page supprimer photo ****/
 
-.modal-content {
-	border: 2px solid black;
-	
-}
+
 #myModal{
 	overflow: auto;
     width: 630px;
@@ -341,7 +338,9 @@ a {
 
 }
 
-
+#modalEdition {
+	flex-direction: column;
+}
 .photoModal {
 	display: flex;
 	flex-direction: column;
@@ -422,4 +421,162 @@ a {
 	font-size: 14px;
 	font-family: 'Syne';
 	color: #D65353;
+}
+
+/***** Modal Ajout photo *****/
+
+.modal-img{
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 600px;
+	height: 650px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.icon-haut {
+	width: 100%;
+	height: 10%;
+	box-sizing: border-box;
+	height: fit-content;
+	display: flex;
+	justify-content: space-between;
+	font-size: 22px;
+}
+.icon-haut .fa-solid {
+	cursor: pointer;
+
+}
+.modal-img h2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: 'Work Sans';
+	color: black;
+	font-weight: normal;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#form-img {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	height: 485px;
+	justify-content: space-between;
+}
+
+.img-aperçu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	height: 180px;
+	background-color: #E8F1F6;
+	position: relative;
+}
+.fa-image {
+	font-size: 80px;
+	color: #B9C5CC;
+	
+}
+
+.image {
+	max-width: 432px;
+	max-height: 180px;
+	pointer-events: none;
+}
+
+#img-input {
+	display: none;
+}
+
+#img-label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	width: 180px;
+	height: 36px;
+	background-color: #D3D3D3;
+	color: #2F4F4F;
+}
+
+.info-img {
+	color: #444;
+	font-size: 10px;
+}
+
+.img-case {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	height: 60px;
+	position: relative;
+}
+
+.img-case div {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	border-radius: 10px;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.img-case div input {
+	width: 100%;
+	height: 100%;
+	margin: 0%;
+	padding: 0%;
+	border: none;
+	font-size: 14px;
+	padding: 0px 6px;
+	color: #444444;
+	font-family: 'Work Sans';
+}
+
+#Cateliste {
+	border: none;
+	border-radius: 0%;
+	appearance: none;
+	padding: 0%;
+	width: 100%;
+	height: 100%;
+	color:#444444;
+	background-color: white;
+	font-size: 14px;
+	padding: 6px;
+	font-family: 'Work Sans';;
+}
+
+.img-case div i {
+	height: 100%;
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 8px;
+	pointer-events: none;
+}
+.img-val {
+	display: flex;
+	justify-content: center;
+}
+#img-validation {
+	width: 275px;
+	height: 40px;
+	background-color: #1D6154;
+	border-radius: 30px;
+	border-style: none;
+	color: white;
+	font-size: 16px;
+	font-family: 'Syne';
+	cursor: pointer;
 }

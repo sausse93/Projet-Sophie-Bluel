@@ -5,7 +5,7 @@ const picture = await reponse.json()
 console.log(picture)
 
 
-function genererPhoto (photo) {
+export function genererPhoto (photo) {
     console.log(photo)
     const divGallery = document.querySelector(".gallery")
         const photoElement = document.createElement("figure")
@@ -75,4 +75,4 @@ boutonHotel.addEventListener("click", function() {
     }
 })
 pageAdmin()   
-modal()
+modal() 
