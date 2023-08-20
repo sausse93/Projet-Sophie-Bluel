@@ -580,3 +580,16 @@ a {
 	font-family: 'Syne';
 	cursor: pointer;
 }
+
+.modalAjout {
+	display: flex;
+	position: absolute;
+	z-index: 2;
+	
+}
+#modalEdition {
+	display: flex;
+	position: absolute;
+	z-index: 1;
+	width: 650px;
+}

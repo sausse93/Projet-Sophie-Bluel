@@ -17,34 +17,71 @@ btnModifP.addEventListener("click",creatModal)
 function creatModal () {
 
     // La forme de la modal 
-
-    if (!document.querySelector("#myModal")){
         console.log(!document.querySelector("#myModal"))
         const modalElement = document.createElement("div")
         modalElement.setAttribute("id", "myModal")
         document.getElementById("portfolio").appendChild(modalElement)
         document.getElementById("myModal").innerHTML=""
         modalElement.innerHTML += `
-<div id="modalEdition">      
-<div class="modal-header">
-<i class="fa-solid fa-xmark"></i>
-<h2>Galerie photo</h2>
-</div>
-<div class="modal-body">
-</div>
-<div class="modal-footer">
-<button class="addPhoto">Ajouter une photo</button>
-<button class="supGallery">Supprimer la galerie</button>
-</div>
-</div>
-
+                <div id="modalEdition">      
+                    <div class="modal-header">
+                        <i class="fa-solid fa-xmark"></i>
+                        <h2>Galerie photo</h2>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="addPhoto">Ajouter une photo</button>
+                        <button class="supGallery">Supprimer la galerie</button>
+                    </div>
+                </div>
+                <div class="modalAjout">
+                    <div class="modal-img">
+                        <div class="icon-haut">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <h2>Ajout photo</h2>
+                        <form id="form-img">
+                            <div class="img-aperçu">
+                                <div class="img-icon">
+                                    <i class="fa-regular fa-image"></i>
+                                </div>
+                                <img class="image">
+                                <input id="img-input" type="file" accept="image/jpeg image/png image/jpg">
+                                <label for="img-input" id="img-label">
+                                    <i class="fa-solid fa-plus"></i> Ajouter une photo
+                                </label>
+                                <p class="info-img">jpeg, png: 4mo max </p>
+                            </div>
+                            <div class="img-case">
+                                <label for="input-titre">Titre</label>
+                                <div>
+                                    <input id="input-titre" type="text" name="titre">
+                                </div>
+                            </div>
+                            <div class="img-case">
+                                <label for="img-categorie">Catégories</label>
+                                <div>
+                                    <select name="img-categorie" id="Cateliste">
+                                        <option value="default" selected></option>
+                                        <option value="1" name="Objet">Objets</option>
+                                        <option value="2" name="Appartements">Appartements</option>
+                                        <option value="3" name="Hotels & restaurants">Hôtels & restaurants</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                            </div>
+                            <div class="img-val">
+                                <button id="img-validation" type="submit">Valider</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> 
 ` 
         console.log("Btn ok")
-    }else {
-        document.querySelector("#myModal").style.display= "flex"
-        document.querySelector(".modalEdition").style.display= "flex"
-    }
-    
+        document.querySelector(".modalAjout").style.visibility="hidden"
+        
 
 // Fermeture de la modal en cliquant sur la croix   
 /*const croix = document.querySelector(".fa-xmark")
@@ -66,7 +103,7 @@ function genererPhotoModal (photo) {
             photoLogo.setAttribute("class", "logo")
             photoElement.src = photo.imageUrl
             photoInfo.innerText = "éditer"
-            photoLogo.innerHTML =`
+            photoLogo.innerHTML +=`
             <i class="fa-solid fa-up-down-left-right"></i>
             <i id="${photo.id}" class="fa-regular fa-trash-can "></i>
                                     `
@@ -119,63 +156,15 @@ const photoAdd = document.querySelector(".addPhoto")
 photoAdd.addEventListener("click", function () {
     console.log("Bouton ajouter une photo OK")
 
-    document.querySelector("#modalEdition").style.display = "none"
-
-      if (!document.querySelector(".modalAjout")){
-        document.querySelector("#myModal").innerHTML += `
-        <div class="modalAjout">
-            <div class="modal-img">
-                <div class="icon-haut">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-            <h2>Ajout photo</h2>
-            <form id="form-img">
-                <div class="img-aperçu">
-                    <div class="img-icon">
-                        <i class="fa-regular fa-image"></i>
-                    </div>
-                    <img class="image">
-                    <input id="img-input" type="file" accept="image/jpeg image/png image/jpg">
-                    <label for="img-input" id="img-label">
-                        <i class="fa-solid fa-plus"></i> Ajouter une photo
-                    </label>
-                    <p class="info-img">jpeg, png: 4mo max </p>
-                </div>
-                <div class="img-case">
-                    <label for="input-titre">Titre</label>
-                    <div>
-                    <input id="input-titre" type="text" name="titre">
-                    </div>
-                </div>
-                <div class="img-case">
-                    <label for="img-categorie">Catégories</label>
-                    <div>
-                        <select name="img-categorie" id="Cateliste">
-                            <option value="default" selected></option>
-                            <option value="1" name="Objet">Objets</option>
-                            <option value="2" name="Appartements">Appartements</option>
-                            <option value="3" name="Hotels & restaurants">Hôtels & restaurants</option>
-                        </select>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                </div>
-                <div class="img-val">
-                    <button id="img-validation" type="submit">Valider</button>
-                </div>
-            </div>
-        </div>    
-
-    `
-    } else {
-        document.querySelector(".modalAjout").style.display = "flex"
-    }   
+    document.querySelector("#modalEdition").style.visibility="hidden"
+    document.querySelector(".modalAjout").style.visibility= "visible"
+       
     // Retour a la modal précedente 
     const backEdition = document.querySelector(".fa-arrow-left")
     backEdition.addEventListener("click", function() {
         console.log("boutton retour OK")
-        document.querySelector("#modalEdition").style.display="block"
-        document.querySelector(".modalAjout").style.display= "none"
+        document.querySelector("#modalEdition").style.visibility= "visible"
+        document.querySelector(".modalAjout").style.visibility= "hidden"
         
       })
 
@@ -235,11 +224,20 @@ photoAdd.addEventListener("click", function () {
                 const reponse = await fetch("http://localhost:5678/api/works")
                 const picture = await reponse.json()
                 document.querySelector(".gallery").innerHTML= ""
-                document.querySelector("#modalEdition").innerHTML=""
+                document.querySelector(".modal-body").innerHTML=""
                 alert("Ajout de la nouvelle photo à la gallerie")
                 for (let photo of picture) {
                     genererPhoto(photo)
                     genererPhotoModal(photo)
+                const imgInput = document.querySelector("#img-input")
+                imgInput.addEventListener("change",function() {
+                    const imgLabel = document.querySelector("#img-switch")
+                    imgLabel.removeAttribute("id","img-switch")
+                    imgLabel.setAttribute("id","img-label")
+                    imgLabel.innerHTML=""
+                })
+                
+                
                     
                 }
             } else {
@@ -250,17 +248,22 @@ photoAdd.addEventListener("click", function () {
         }
         addWorks()
         document.querySelector("#form-img").reset()
+        
     })
     })
 
-
-const croix = document.querySelector(".fa-xmark")
-console.log(document.querySelector(".fa-xmark"))
-croix.onclick = function () {
-    console.log("btn fermer est OK")
-    const modalElement = document.getElementById("myModal")
-    document.getElementById("portfolio").removeChild(modalElement)
+// Fermeture de la modal
+const croix = document.querySelectorAll(".fa-xmark")
+function removeModal () {
+    document.querySelector("#portfolio").removeChild(modalElement)
 }
+function croixClose () {
+    for (let i = 0; i < croix.length ; i++) {
+        let element = croix[i]
+        element.addEventListener("click", removeModal)
+    }
+}
+croixClose()
 }
 
 
