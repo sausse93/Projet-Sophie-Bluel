@@ -25,13 +25,15 @@ function editBarre () {
         
     <button id="bouttonEdit">
         <i class="fa-regular fa-pen-to-square"></i>
-        <a href="#modal">Mode édition</a>
+        <p class="btnEdit">Mode édition</p>
     </button>
     <button id="bouttonPubli">
         publier les changements
     </button>
      `	   
      console.log("Fonction editBarre OK")
+     const btnPublie = document.querySelector("#bouttonPubli")
+    btnPublie.addEventListener("click", publiEdit)
 }
 
     // Fonction pour le boutton Logout
@@ -82,5 +84,11 @@ function suppCate () {
 }
 
 
-// Lancement Fonction de la page en mode Admin
+// Button publier les changements
+
+function publiEdit () {
+    sessionStorage.removeItem("token")
+    window.location.href= 'index.html'
+}
+
 

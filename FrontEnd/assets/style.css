@@ -185,6 +185,10 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+li {
+	cursor: pointer;
+}
 /***** images*****/
 
 .gallery img {
@@ -275,10 +279,9 @@ a {
 	color: white;
 	border: none;
 	font-family: 'Syne';
+	cursor: pointer;
 }
-#bouttonEdit a {
-	color: white;
-}
+
 
 #bouttonPubli {
 	display: flex;
@@ -290,6 +293,7 @@ a {
 	margin-left: 10px;
 	font-family: 'Syne';
 	border: 0px solid black;
+	cursor: pointer;
 }
 
 .fa-regular {

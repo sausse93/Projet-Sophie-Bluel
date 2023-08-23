@@ -11,7 +11,8 @@ console.log(btnModifI)
 console.log("btn modif image OK")
 const btnModifP = document.querySelector(".modifImageProjet")
 btnModifP.addEventListener("click",creatModal)
-
+const btnEdit = document.querySelector("#bouttonEdit")
+btnEdit.addEventListener("click",creatModal )
 }
 // fonction pour creer la modal avec les photo 
 function creatModal () {
@@ -92,7 +93,7 @@ croix.onclick = function () {
 
 // fonction de la generation des photos dans la modal
 function genererPhotoModal (photo) {
-            console.log(photo.id)
+            //console.log(photo.id)
             const photoModal = document.querySelector(".modal-body")
             const divPhoto = document.createElement("div")
             divPhoto.setAttribute("class", "photoModal")
@@ -262,4 +263,10 @@ function croixClose () {
     }
 }
 croixClose()
+}
+
+window.onclick = function (event) {
+    if(event.target == document.querySelector("#myModal")) {
+        document.querySelector("#portfolio").removeChild(document.querySelector("#myModal"))
+    }
 }
