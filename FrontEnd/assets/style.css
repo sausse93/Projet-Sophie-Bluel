@@ -185,7 +185,13 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/***** images*****/
 
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 /***** Categorie ****/
 #categories {
 	display: flex;
@@ -321,50 +327,79 @@ a {
 
 
 #myModal{
-	overflow: auto;
-    width: 630px;
-    height: 70%;
-    max-width: calc(100vw - 20px);
-    max-height: calc(100vh - 20px);
-    overflow: auto;
-    border-radius: 10px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 8%;
-	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
 	
 
 }
 
 #modalEdition {
+	display: flex;
+	align-items: center;
 	flex-direction: column;
+	width: 600px;
+	height: fit-content;
+	background-color: white;
+	border-radius: 10px;
+	padding: 30px;
 }
-.photoModal {
+.modal-header {
 	display: flex;
 	flex-direction: column;
-	width: 78px;
+	width: 100%;
+	justify-content: center;	
+}
+.modal-header h2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal-header i {
+	cursor: pointer;
+}
+.photoModal {
+	height: 132.5px;
+	width: 18.30%;
+	text-align: left;
+	position: relative;
 	
 	
 }
-
+.photoModal img{
+	width: 100%;
+	height: 90%;
+	object-fit: cover;
+}
 .modal-body {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	gap: 25px;
-	margin: 20px;
-	border-bottom: 1px solid grey;
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+	height: fit-content;
+	border-bottom: 1px solid lightgrey;
+	gap: 10px;
+	text-align: center;
+	padding-bottom: 50px;
 	
 }
 
 .logo {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 6px;
+	right: 20px;
+	width: 19.5px;
+	height: 19.5px;
 	color: white;
-	display: inline-block;
-	position: relative;
-	top: -104px;
-	right: -26px;
-	margin: 0;
+	gap: 5px;
 }
 
 .fa-trash-can:hover , .fa-up-down-left-right:hover {
@@ -386,10 +421,7 @@ a {
 	visibility: visible;
 }
 .photoModal figcaption {
-	position: relative;
-	top: -20px;
-	padding: 0;
-	margin: 0;
+	height: 10%;
 }
 
 .modal-footer {

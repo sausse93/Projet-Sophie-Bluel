@@ -225,20 +225,18 @@ photoAdd.addEventListener("click", function () {
                 const picture = await reponse.json()
                 document.querySelector(".gallery").innerHTML= ""
                 document.querySelector(".modal-body").innerHTML=""
-                alert("Ajout de la nouvelle photo à la gallerie")
+                alert("Ajout de la nouvelle photo à la gallerie") 
+                document.querySelector(".img-icon").style.display= "block"
+                document.querySelector(".info-img").style.display= "block"
+                document.querySelector(".image").style.display= "none"
+                document.querySelector(".image").removeAttribute("src")
+                const imgLabel = document.querySelector("#img-switch")
+                imgLabel.removeAttribute("id","img-switch")
+                imgLabel.setAttribute("id","img-label")
+                imgLabel.innerHTML =`<i class="fa-solid fa-plus"></i> Ajouter une photo`
                 for (let photo of picture) {
                     genererPhoto(photo)
                     genererPhotoModal(photo)
-                const imgInput = document.querySelector("#img-input")
-                imgInput.addEventListener("change",function() {
-                    const imgLabel = document.querySelector("#img-switch")
-                    imgLabel.removeAttribute("id","img-switch")
-                    imgLabel.setAttribute("id","img-label")
-                    imgLabel.innerHTML=""
-                })
-                
-                
-                    
                 }
             } else {
                 console.log(promise.status)
@@ -265,5 +263,3 @@ function croixClose () {
 }
 croixClose()
 }
-
-

@@ -39,12 +39,13 @@ function editBarre () {
 function logout () {
         const logout = document.querySelector(".log")
         logout.innerText = "logout"
+        logout.removeAttribute("href")
+        logout.setAttribute("href", "index.html")
         logout.addEventListener("click",buttonLogout)
     }
 
 function buttonLogout () {
-    sessionStorage.removeItem("token")
-    window.location.href = "index.html"
+   sessionStorage.removeItem("token")
 }
 
     // Fonction ajout des bouttons modifier 
