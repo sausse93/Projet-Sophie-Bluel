@@ -1,9 +1,11 @@
-console.log("hello world")
+// Fonction importer
 import { genererPhoto } from "./script.js"
+// Declaration de differente variable
 let reponse = await fetch("http://localhost:5678/api/works")
 let picture = await reponse.json()
-
 let token = sessionStorage.getItem("token")
+
+// fonction de la création de la modal lors du click sur le btn modif et exporter
 export function modal () {
 const btnModifI = document.querySelector(".modifImage")
 btnModifI.addEventListener("click",creatModal)
@@ -58,7 +60,7 @@ function creatModal () {
                             <div class="img-case">
                                 <label for="input-titre">Titre</label>
                                 <div>
-                                    <input id="input-titre" type="text" name="titre">
+                                    <input id="input-titre" type="text" name="titre" required>
                                 </div>
                             </div>
                             <div class="img-case">
@@ -82,18 +84,12 @@ function creatModal () {
 ` 
         console.log("Btn ok")
         document.querySelector(".modalAjout").style.visibility="hidden"
-        
-
-// Fermeture de la modal en cliquant sur la croix   
-/*const croix = document.querySelector(".fa-xmark")
-croix.onclick = function () {
-    const modalElement = document.getElementById("myModal")
-    document.getElementById("portfolio").removeChild(modalElement)
-}*/
 
 // fonction de la generation des photos dans la modal
-function genererPhotoModal (photo) {
-            //console.log(photo.id)
+async function genererPhotoModal (photo) {
+            console.log(photo.id)
+            const reponse = await fetch("http://localhost:5678/api/works")
+            const picture = await reponse.json()
             const photoModal = document.querySelector(".modal-body")
             const divPhoto = document.createElement("div")
             divPhoto.setAttribute("class", "photoModal")
@@ -127,8 +123,8 @@ function genererPhotoModal (photo) {
                     })
                     if (promise.ok === true) {
                         alert("Suppression de l'élément fait")
-                        reponse = await fetch("http://localhost:5678/api/works")
-                        picture = await reponse.json()
+                        const reponse = await fetch("http://localhost:5678/api/works")
+                        const picture = await reponse.json()
                         document.querySelector(".modal-body").innerHTML=""
                         document.querySelector(".gallery").innerHTML=""
                         for (let photo of picture) {
@@ -170,7 +166,6 @@ photoAdd.addEventListener("click", function () {
       })
 
     // Ajout d'une photo
-    const imgConteneur = document.querySelector(".img-aperçu")
     const imgInput = document.querySelector("#img-input")
     const img = document.querySelector(".image")
     img.style.display= "none"

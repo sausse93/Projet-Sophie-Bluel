@@ -1,10 +1,13 @@
+// Import de différente fonction
 import { pageAdmin } from "./pageAdmin.js"
 import { modal} from "./modal.js"
+
+// Déclaration de variable
 const reponse = await fetch("http://localhost:5678/api/works")
 const picture = await reponse.json()
-console.log(picture)
 
 
+// Fonction pour génerer les photo via l'API
 export function genererPhoto (photo) {
     console.log(photo)
     const divGallery = document.querySelector(".gallery")
@@ -74,5 +77,7 @@ boutonHotel.addEventListener("click", function() {
         }
     }
 })
+
+// Déclaration des différentes fonctions pour la mise en page en mode Edition "Admin"
 pageAdmin()   
 modal() 
